@@ -10,7 +10,7 @@ $name = $_POST['name'];
 
 $comment = $_POST['comment'];
 
-$pdo = new PDO('mysql:host=localhost; dbname=LOGUIN;','root','root');
+$pdo = new PDO('mysql:host=localhost; dbname=LOGUIN;','root','');
 
 $stmt = $pdo->prepare('INSERT INTO comments (name, comments) VALUES (:na, :co)');
 

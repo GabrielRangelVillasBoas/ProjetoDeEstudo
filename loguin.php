@@ -10,7 +10,7 @@ if(empty($_POST['usuario']) || empty($_POST['senha'])) {
 $usuario = mysqli_real_escape_string($conexao, $_POST['usuario']);
 $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 
-$query = "select usuario_id, usuario from usuario where usuario = '{$usuario}' and senha = '{$senha}'";
+$query = "select USUARIO, NOME, EMAIL FROM COMMENT where usuario = '{$usuario}' and senha = '{$senha}'";
 
 $result = mysqli_query($conexao, $query);
 

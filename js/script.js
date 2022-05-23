@@ -12,7 +12,7 @@ $('#formu').submit(function(e){
     e.preventDefault();
     var u_name = $('#name').val();
     var u_comment = $('#comment').val();
-    var result = $(location).attr('href', 'http://projetinho.local/site.php')
+    var result = $(location).attr('href', 'http://localhost/projetodeestudo/site.php')
     // console.log('#formu')
     var error = 0
     if(u_name == ''){

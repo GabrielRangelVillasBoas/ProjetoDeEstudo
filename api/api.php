@@ -2,7 +2,7 @@
 <?php
 
 //conexão
-$conn = mysqli_connect('localhost', 'root', 'root', 'loguin');
+$conn = mysqli_connect('localhost', 'root', '', 'loguin');
 
 
 // pegar o metodo da chamada, POST ou GET

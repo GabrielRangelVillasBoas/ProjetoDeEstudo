@@ -41,7 +41,7 @@ if((!isset($_SESSION['loguin']) == true) and (!isset($_SESSION['senha']) == true
 <body>
   <?php
     
-  $query = "select nome, sobrenome, idade from pessoa";
+  $query = "select USUARIO, NOME, EMAIL FROM COMMENT where usuario = '{$usuario}' and senha = '{$senha}'";
   
   $result = mysqli_query($conexao, $query);
   echo "<table border='1'>
@@ -74,7 +74,7 @@ echo "</table>";
             <ul class="navbar-nav ml-auto">
               <?php
               // Conectando ao banco de dados da tabela LINKS 
-               $query = "select link, href from links";
+              //  $query = "select link, href from links";
                $result = mysqli_query($conexao, $query);
               // Percorrendo os resultados da tabela Links
                if($result->num_rows > 0){
