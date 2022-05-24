@@ -181,9 +181,9 @@ if((!isset($_SESSION['loguin']) == true) and (!isset($_SESSION['senha']) == true
   <form id="formu">
     <div class="form-row" >
       <div class="col">
-        <input type="text" class="form-control form-control-lg mt-5 required" name="name" id="name" placeholder="Nome" >
+        <input type="text" class="form-control form-control-lg mt-5 required" name="nome" id="nome" placeholder="Nome" >
         <input type="text" class="form-control form-control-lg mt-5 required" name="email" id="email" placeholder="E-mail">
-        <input type="text" class="form-control form-control-lg mt-5 required" name="comment" id="comment" placeholder="Telefone" >
+        <input type="text" class="form-control form-control-lg mt-5 required" name="telefone" id="telefone" placeholder="Telefone" >
         <!-- <select class="form-control form-control-lg mt-5" id="exampleFormControlSelect1">
           <option>Financeiro</option>
           <option>Administrativo</option>
@@ -193,7 +193,7 @@ if((!isset($_SESSION['loguin']) == true) and (!isset($_SESSION['senha']) == true
         <div class="form-group row">
          
           <div class="col-sm-10">
-            <textarea class="form-control form-control-lg mt-5" id="exampleFormControlTextarea1" rows="9" placeholder="Menssagem"></textarea>
+            <textarea class="form-control form-control-lg mt-5" name="mensagem" id="mensagem" rows="9" placeholder="Menssagem"></textarea>
            <button id="enviar" type="submit" form="formu" class="btn btn-danger ml-0 mt-3">Enviar </button>
            <!-- <input type="button" id="enviar_contato" value="Enviar" onclick="EnviarContato();" > -->
           </div>

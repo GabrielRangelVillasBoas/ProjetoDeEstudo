@@ -6,16 +6,23 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Content-Type");
 require_once('phpmailer/PHPMailerAutoload.php');
 
-$name = $_POST['name'];
+$nome = $_POST['nome'];
 
-$comment = $_POST['comment'];
+$email = $_POST['email'];
 
-$pdo = new PDO('mysql:host=localhost; dbname=LOGUIN;','root','');
+$telefone = $_POST['telefone'];
 
-$stmt = $pdo->prepare('INSERT INTO comments (name, comments) VALUES (:na, :co)');
+$mensagem = $_POST['mensagem'];
 
-$stmt->bindValue(':na',$name);
-$stmt->bindValue(':co',$comment);
+
+$pdo = new PDO('mysql:host=localhost; dbname=loguin;','root','');
+
+$stmt = $pdo->prepare('INSERT INTO sms (nome, email, telefone, mensagem) VALUES (:nome, :email, :telefone, :mensagem)');
+
+$stmt->bindValue(':nome', $nome);
+$stmt->bindValue(':email', $email);
+$stmt->bindValue(':telefone', $telefone);
+$stmt->bindValue(':mensagem', $mensagem);
 $stmt->execute();
 if($stmt->rowCount() >= 1){
     echo json_encode('Salvo');
@@ -24,32 +31,33 @@ if($stmt->rowCount() >= 1){
 }
 
     
-    $name = $_POST['name'];
-    //  $telefone = $_POST['telefone'];
-    //   $email = $_POST['email'];
-       $comments = $_POST['comment'];
-         $sql = "INSERT INTO comments VALUES ('$name','$comments')";
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $mensagem = $_POST['mensagem'];
+
+         $sql = "INSERT INTO sms VALUES ('$nome','$email','$telefone','$mensagem')";
            mysqli_query($conexao,$sql);
            var_dump($sql);
            $html = '<b>Chegou seu e-mail !</b> <br /><br />';
-           $html .= '<b>Nome:</b> '.utf8_encode($name).'<br />';
+           $html .= '<b>Nome:</b> '.utf8_encode($nome).'<br />';
         //    $html .= '<b>Telefone:</b> '.$telefone.'<br />'; 			
         //    $html .= '<b>E-mail:</b> '.$email.'<br />'; 			
-           $html .= '<b>Mensagem:</b> '.$comments.'<br />'; 			
+           $html .= '<b>Mensagem:</b> '.$nome.'<br />'; 			
      
          $mailer = new PHPMailer();
          $mailer->IsSMTP();
          $mailer->SMTPDebug = 0;
-         $mailer->Port = 587;
-         $mailer->Host = 'smtp.office365.com';
+         $mailer->Port = 465;
+         $mailer->Host = 'smtp.hostinger.com';
          $mailer->SMTPAuth = true;
          $mailer->SMTPSecure = 'tls';
-         $mailer->Username = '';
-         $mailer->Password = '';
+         $mailer->Username = 'gabrielrangel@gabrielrangel.xyz';
+         $mailer->Password = 'Niel2002*';
          $mailer->setFrom('',);
          // $mailer->addAddress('');
          // $mailer->addAddress('');
-         $mailer->addAddress('');
+         $mailer->addAddress('cursosgabrielrangel@gmail.com');
          $mailer->Subject = 'BOM - DIA!';
          $mailer->CharSet = 'UTF-8';
          $mailer->Body = $html;

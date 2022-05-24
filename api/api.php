@@ -11,36 +11,39 @@ $method = $_SERVER['REQUEST_METHOD'];
 //Via POST faremos o update e o insert
 if ($method == "POST"){
  
-  $novoUsuario = $_POST["novoUsuario"];
-  $novaSenha = $_POST["novaSenha"];
+  $varLoguin = $_POST['novoUsuario'];
+  $varSenha = $_POST['novaSenha'];
+  $varNome = $_POST['novoNome'];
+  $varCpf = $_POST['novoCpf'];
   // $redirect = $_GET["redirect"];
   $dia = date('Y/m/d H:i:s');
   $paginaAtual = basename($_SERVER['PHP_SELF']);
   // acao=INSERT&tabela=usuario&novoUsuario=nielzada1993&novaSenha=123456
    
+// Criação tabela cadastro clientes
+//   CREATE TABLE Cadastro (
+//     cadastroId int NOT NULL AUTO_INCREMENT,
+//     loguin varchar(255),
+//     senha varchar(255),
+//     nome varchar(255),
+//     cpf varchar(255),
+//     PRIMARY KEY (cadastroId)
+// );
 
-
-  $sql = "";
-        $sql = "INSERT INTO usuario (usuario, senha) VALUES ('$novoUsuario','$novaSenha')";
-        $sql2 = "INSERT INTO logs (data, sistema) VALUES ('$dia', '$paginaAtual')";
+  // $sql = "";
+        // $sql = "INSERT INTO usuario (usuario, senha) VALUES ('$novoUsuario','$novaSenha')";
+        $insereUsuario = "INSERT INTO `Cadastro`(`loguin`, `senha`, `nome`, `cpf`) VALUES ('$varLoguin','$varSenha','$varNome','$varCpf')";
+        // $sql2 = "INSERT INTO logs (data, sistema) VALUES ('$dia', '$paginaAtual')";
 
   //Executar ação no banco
-  $result = mysqli_query($conn, $sql);
+  $result = mysqli_query($conn, $insereUsuario);
 
-  echo $result;
-  $result2 = mysqli_query($conn, $sql2);
   
-  $myfile = fopen("dblocal.txt", "a") or die("Unable to open file!");
-  $save = "usuario:". $novoUsuario . "senha:" . $novaSenha ."\n";
-  fwrite($myfile, $save);
-  fclose($myfile);
 
-  // if($redirect =='google'){
-  //   header("location: http://www.palmeiras.com.br");
-  // }else{
-  //   header("location: http://www.g1.com.br");
 
-  // }
+  if($result > 0){
+    header("location: http://localhost/site.php");
+  }
 
 
 }else if ($method == "GET"){

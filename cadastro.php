@@ -19,11 +19,11 @@ include("header.php");
       <img src="Fotos/mascara_banner_1.jpg" alt="">
       <h2>Cadastra-se</h2>
       <div class="input-group">
-        <input type="text" name="novoUsuario" id="novoUsuario" autocomplete="off" required>
+        <input type="text" name="novoUsuario" id="varLoguin" autocomplete="off" required>
         <label for="loginUser">Novo usuario</label>
       </div>
       <div class="input-group">
-        <input type="password" name="novaSenha" id="novaSenha" required>
+        <input type="password" name="novaSenha" id="varSenha" required>
         <label for="loginPassword">Nova senha</label>
       </div>
       <input type="submit" value="Cadastra-se" class="submit-btn">
@@ -44,11 +44,13 @@ include("header.php");
   </div>
   <script>
     function chamaApiCadastro(){
-      var novaSenha = $('#novaSenha').val();
-      var novoUsuario = $('#novoUsuario').val();
+      var novoUsuario = $('#varLoguin').val();
+      var novaSenha = $('#varSenha').val();
+      var novaCpf = $('#varCpf').val();
+      var novoNome = $('#varNome').val();
       console.log('entrounafuncao')
       var settings = {
-  "url": "http://projetinho.local/api/api.php",
+  "url": "http://localhost/api/api.php",
   "method": "POST",
   "timeout": 0,
   "headers": {
@@ -65,7 +67,7 @@ include("header.php");
     "sec-ch-ua-mobile": "?0",
     "sec-ch-ua-platform": "\"Windows\""
   },
-  "data": "acao=INSERT&redirect=google&novoUsuario="+novoUsuario+"&novaSenha="+novaSenha,
+  "data": "acao=INSERT&redirect=google&novoUsuario="+novoUsuario+"&novaSenha="+novaSenha+"&novoCpf="+novoCpf+"&novoNome="+novoNome
 };
 
 $.ajax(settings).done(function (response) {

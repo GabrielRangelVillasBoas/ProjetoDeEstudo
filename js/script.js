@@ -1,7 +1,7 @@
 // MASCARA TELEFONE
 
 $(document).ready(function(){
-    $("#comment").mask("(00) 00000-0000")
+    $("#telefone").mask("(00) 00000-0000")
     
 })
 
@@ -10,23 +10,24 @@ $(document).ready(function(){
 
 $('#formu').submit(function(e){
     e.preventDefault();
-    var u_name = $('#name').val();
-    var u_comment = $('#comment').val();
-    var result = $(location).attr('href', 'http://localhost/projetodeestudo/site.php')
-    // console.log('#formu')
+    var nome = $('#nome').val();
+    var email = $('#email').val();
+    var telefone = $('#telefone').val();
+    var mensagem = $('#mensagem').val();
+    
     var error = 0
-    if(u_name == ''){
+    if(nome == ''){
         alert('favor inserir os dados')
         return;
     }
-    if(u_comment == ''){
+    if(email == ''){
         alert('favor inserir os dados')
         return;
     }
     $.ajax({
-        url: 'http://projetinho.local/inserir.php',
+        url: 'http://localhost/inserir.php',
         type: 'POST',   
-        data: {name: u_name, comment: u_comment},
+        data: {nome: nome, email: email, telefone: telefone, mensagem: mensagem},
         success: function(result){
             result;
         }
